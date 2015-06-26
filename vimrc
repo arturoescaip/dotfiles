@@ -1,14 +1,25 @@
-call pathogen#infect()
+" Vundle setup
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tomtom/tcomment_vim'
+call vundle#end()
+filetype plugin indent on
 
 if has("gui_running")
   set background=light
   colorscheme solarized
 endif
-
-let g:unite_enable_ignore_case=1
-
-" For camel case
-nnoremap <space>c :ToggleCamelCase<cr>
 
 set mouse=a
 set laststatus=2
@@ -21,9 +32,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-nnoremap \| :vsplit<cr>
-nnoremap - :split<cr>
 
 " Move through errors quickly
 nnoremap <C-n> :cn<CR>
@@ -58,12 +66,6 @@ syntax enable
 
 " Load man plugin
 runtime ftplugin/man.vim
-
-" for tcomment
-map <leader>c <C-_><C-_>
-
-" For easy-motion
-let g:EasyMotion_leader_key = '<Leader>'
 
 " Perl support.
 function! AddPerlBoilerPlate()
