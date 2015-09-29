@@ -13,6 +13,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'fs111/pydoc.vim'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype plugin indent on
 
@@ -67,6 +69,10 @@ syntax enable
 " Load man plugin
 runtime ftplugin/man.vim
 
+" youcomplete me
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:EclimCompletionMethod = 'omnifunc'
+
 " Perl support.
 function! AddPerlBoilerPlate()
   let lines = [ "#" . "!/usr/bin/perl -w",
@@ -90,3 +96,8 @@ endfunction
 autocmd! BufNewFile *.pl6 call AddPerl6BoilerPlate()
 
 autocmd! BufRead *.java set foldmethod=indent foldlevel=99
+
+if $VIM_CRONTAB == "true"
+  set nobackup
+  set nowritebackup
+endif

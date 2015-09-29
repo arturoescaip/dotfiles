@@ -20,5 +20,7 @@ source "`brew --prefix`/etc/grc.bashrc"
 stty ixany
 stty ixoff -ixon
 
+export EDITOR=vim
+
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

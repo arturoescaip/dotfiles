@@ -56,8 +56,12 @@ export PATH="/Users/arturo/.rvm/gems/ruby-2.0.0-p247/bin:/Users/arturo/.rvm/gems
 # export MANPATH="/usr/local/man:$MANPATH"
 export PATH="/Users/arturo/tmp/perl6/rakudo-star-2014.03/install/bin:$PATH"
 
+export EDITOR=vim
+
 bindkey "^[l" down-case-word
 export PYTHONSTARTUP=$HOME/.python/startup.py
+
+alias crontab="VIM_CRONTAB=true crontab"
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
