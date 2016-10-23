@@ -18,16 +18,9 @@ Plugin 'fatih/vim-go'
 call vundle#end()
 filetype plugin indent on
 
-if has("gui_running")
-  set background=light
-  colorscheme solarized
-endif
-
-set mouse=a
 set laststatus=2
 nnoremap <C-s> <Esc>:w<CR>
 map <Space> :nohl<CR>
-map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
 " Change windows quickly
 nnoremap <C-h> <C-w>h
@@ -39,11 +32,14 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-n> :cn<CR>
 nnoremap <C-p> :cp<CR>
 
-set statusline=[%n]\ %<%.99f\%h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\%l,%c-%v\ %)%P
+ " Make j,k work better on long lines
+nnoremap j gj
+nnoremap k gk
 
-if has('autocmd')
-  filetype plugin indent on
-endif
+" vim-go config
+let g:go_fmt_command = "goimports"
+
+abbreviate pdb; import pdb; pdb.set_trace()
 
 set modeline
 set modelines=1
@@ -51,7 +47,6 @@ set nocompatible
 filetype plugin on
 set autoread
 set visualbell
-set mouse=a
 set number
 set showcmd
 set ruler
@@ -96,6 +91,8 @@ endfunction
 autocmd! BufNewFile *.pl6 call AddPerl6BoilerPlate()
 
 autocmd! BufRead *.java set foldmethod=indent foldlevel=99
+
+autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 
 if $VIM_CRONTAB == "true"
   set nobackup
