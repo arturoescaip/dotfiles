@@ -117,5 +117,10 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
+# Source other config files
+for f in ~/.{zsh,local/zsh}/*.zsh(N); do
+  source $f
+done
+
 eval "$(direnv hook zsh)"
 source ~/.iterm2_shell_integration.zsh
