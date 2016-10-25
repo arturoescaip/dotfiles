@@ -15,6 +15,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'fs111/pydoc.vim'
 Plugin 'fatih/vim-go'
+Plugin 'arturoescaip/related.vim'
 call vundle#end()
 filetype plugin indent on
 
