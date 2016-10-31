@@ -18,6 +18,8 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'fs111/pydoc.vim'
 Plugin 'fatih/vim-go'
 Plugin 'arturoescaip/related.vim'
+Plugin 'nelstrom/vim-markdown-folding'
+Plugin 'nelstrom/vim-visual-star-search'
 call vundle#end()
 
 "}}}
@@ -68,7 +70,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-n> :cn<CR>
 nnoremap <C-p> :cp<CR>
 
- " Make j,k work better on long lines
+" Make j,k work better on long lines
 nnoremap j gj
 nnoremap k gk
 
