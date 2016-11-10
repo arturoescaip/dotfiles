@@ -20,6 +20,7 @@ Plugin 'fatih/vim-go'
 Plugin 'arturoescaip/related.vim'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'majutsushi/tagbar'
 call vundle#end()
 
 "}}}
@@ -47,6 +48,7 @@ set shiftwidth=2
 set tabstop=2
 set history=1000
 syntax enable
+let mapleader = "\<space>"
 
 if $VIM_CRONTAB == "true"
   set nobackup
@@ -84,8 +86,11 @@ abbreviate pdb; import pdb; pdb.set_trace()
 
 " Auto commands {{{
 
+" Java
 autocmd! BufRead *.java set foldmethod=indent foldlevel=99
-autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+
+" Go
+autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4 tw=80 foldmethod=syntax foldlevel=99
 
 "}}}
 
@@ -93,14 +98,45 @@ autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 
 " vim-go config
 let g:go_fmt_command = "goimports"
+let g:go_fmt_experimental = 1
 
 " youcomplete me
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:EclimCompletionMethod = 'omnifunc'
 
 " related.vim
-nnoremap <silent> <space>o :call related#switch(0)<CR>
-nnoremap <silent> <space>O :call related#switch(1)<CR>
+nnoremap <silent> <leader>o :call related#switch(0)<CR>
+nnoremap <silent> <leader>O :call related#switch(1)<CR>
+
+" Tagbar golang support
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+nnoremap <silent> <leader>t :TagbarToggle<CR>
 
 "}}}
 
