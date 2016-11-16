@@ -47,6 +47,8 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 set history=1000
+set splitright
+set splitbelow
 syntax enable
 let mapleader = "\<space>"
 
