@@ -3,25 +3,28 @@
 
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+call plug#begin('~/.plug')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+"Plugin 'gmarik/Vundle.vim'
 
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'fs111/pydoc.vim'
-Plugin 'fatih/vim-go'
-Plugin 'arturoescaip/related.vim'
-Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'majutsushi/tagbar'
-call vundle#end()
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fugitive'
+Plug 'tomtom/tcomment_vim'
+Plug 'fs111/pydoc.vim'
+Plug 'fatih/vim-go'
+Plug 'arturoescaip/related.vim'
+Plug 'nelstrom/vim-markdown-folding'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'majutsushi/tagbar'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+call plug#end()
 
 "}}}
 
@@ -93,6 +96,8 @@ autocmd! BufRead *.java set foldmethod=indent foldlevel=99
 
 " Go
 autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4 tw=80 foldmethod=syntax foldlevel=99
+
+autocmd! BufNewFile,BufRead *.py setlocal sw=4
 
 "}}}
 
