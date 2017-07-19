@@ -1,14 +1,9 @@
 
-" Vundle {{{
+" Plug {{{
 
 set nocompatible
 filetype off
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
 call plug#begin('~/.plug')
-
-" let Vundle manage Vundle, required
-"Plugin 'gmarik/Vundle.vim'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
@@ -24,6 +19,7 @@ Plug 'nelstrom/vim-visual-star-search'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 "}}}
@@ -99,6 +95,8 @@ autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4 tw=80 foldmethod=s
 
 autocmd! BufNewFile,BufRead *.py setlocal sw=4
 
+autocmd! BufNewFile,BufRead *.zsh-theme setfiletype zsh
+
 "}}}
 
 " Plugin config {{{
@@ -144,6 +142,9 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 nnoremap <silent> <leader>t :TagbarToggle<CR>
+
+" lightline
+let g:lightline = {'colorscheme': 'wombat'}
 
 "}}}
 
