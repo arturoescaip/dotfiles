@@ -24,3 +24,6 @@ export EDITOR=vim
 
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# added by Anaconda3 4.3.1 installer
+export PATH="/Users/arturo/anaconda/bin:$PATH"
