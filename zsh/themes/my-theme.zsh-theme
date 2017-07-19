@@ -1,39 +1,15 @@
-local ret_status prompt_char main_prompt ns_prompt hn_prompt
+local ret_status prompt_char main_prompt
 
 prompt_char='%%' # Need to escape the %
 
 function main_prompt {
    # This colors the name of the package in green
 
-   local path parts
+   local path
    path=$(print -P %~) # Get tilde-contracted working dir
-   # if [[ $path =~ "^/src/" ]]; then
-   #    parts=( ${(@s,/,)path} ) # split on slashes
-   #    if (( ${#parts} > 1 )); then
-   #       parts[2]="%{$fg[green]%}${parts[2]}%{$fg[blue]%}" # Package name in green
-   #       path=/${(j,/,)parts} # Join with slashes
-   #    fi
-   # fi
    echo "%{$fg[blue]%}$path"
 
 }
-
-# function ns_prompt {
-#    # If we are in a namespace, show the namespace name in yellow
-#    if [ -n "$NS" ]; then
-#       echo " %{$fg[yellow]%}(${NS#+})"
-#    else
-#       echo ""
-#    fi
-# }
-
-# function hn_prompt {
-#    if [ -z "$WP" ]; then
-#       echo "(%{$fg[red]%}`hostname | cut -d. -f1`%{$reset_color%}) "
-#    else
-#       echo ""
-#    fi
-# }
 
 function ret_status {
    echo "%(?:%{$fg_bold[green]%}${prompt_char}:%{$fg_bold[red]%}${prompt_char}%s)"
