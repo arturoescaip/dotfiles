@@ -10,7 +10,7 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug 'fs111/pydoc.vim'
 Plug 'fatih/vim-go'
 Plug 'arturoescaip/related.vim'
@@ -20,6 +20,9 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'cespare/vim-toml'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
 
 "}}}
@@ -27,9 +30,6 @@ call plug#end()
 " Options {{{
 
 filetype plugin indent on
-set laststatus=2
-set modeline
-set modelines=1
 set nocompatible
 filetype plugin on
 set autoread
@@ -42,6 +42,7 @@ set incsearch
 set showmatch
 set hlsearch
 set mat=2
+set smarttab
 set expandtab
 set shiftwidth=2
 set tabstop=2
@@ -49,11 +50,19 @@ set history=1000
 set splitright
 set splitbelow
 syntax enable
+set laststatus=2
+set noshowmode
 let mapleader = "\<space>"
+set backspace=indent,eol,start
 
 if $VIM_CRONTAB == "true"
   set nobackup
   set nowritebackup
+endif
+
+if !has('gui_running')
+  colorscheme delek
+  set t_Co=256
 endif
 
 "}}}
@@ -93,7 +102,7 @@ autocmd! BufRead *.java set foldmethod=indent foldlevel=99
 " Go
 autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4 tw=80 foldmethod=syntax foldlevel=99
 
-autocmd! BufNewFile,BufRead *.py setlocal sw=4
+autocmd! BufNewFile,BufRead */arista/*.py setlocal sw=3 foldmethod=indent foldlevel=99
 
 autocmd! BufNewFile,BufRead *.zsh-theme setfiletype zsh
 
@@ -144,7 +153,11 @@ let g:tagbar_type_go = {
 nnoremap <silent> <leader>t :TagbarToggle<CR>
 
 " lightline
-let g:lightline = {'colorscheme': 'wombat'}
+" let g:lightline = {'colorscheme': 'wombat'}
+
+" Fzf
+nnoremap <silent> <Space>f :Files<CR>
+nnoremap <silent> <Space>b :Buffers<CR>
 
 "}}}
 
